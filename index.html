@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Furniro</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Inter', sans-serif;
+
+        body {
+          line-height: 1.5;
+        }
+
+        .header {
+          padding: 20px 5%;
+          position: fixed;
+          width: 100%;
+          top: 0;
+          background: #ffffff;
+          z-index: 100;
+          border-bottom: 1px solid #ebe8f4;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+
+        .nav-container {
+          margin: 0 auto;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          width: 100%;
+        }
+
+        .logo {
+          display: flex;
+          align-items: center;
+          font-size: 24px;
+          font-weight: 900;
+        }
+
+        .logo img {
+          margin-right: 10px;
+        }
+
+        .main-nav {
+          display: flex;
+          align-items: center;
+        }
+
+        .main-nav a {
+          margin-left: 40px;
+          text-decoration: none;
+          color: #000000;
+          font-weight: 500;
+        }
+
+        .nav-icons {
+          display: flex;
+          align-items: center;
+          gap: 20px;
+        }
+
+        .nav-icons img {
+          width: 24px;
+          height: auto;
+        }
+
+        .hero {
+          height: 80vh;
+          margin-top: 75px;
+          background: url(scandinavian-interior-mockup-wall-decal-background\ 1.png)
+            center/cover no-repeat;
+          width: auto;
+          display: flex;
+          align-items: center;
+          justify-content: flex-end;
+          padding: 0 5%;
+          position: relative;
+        }
+
+        .hero-content {
+          max-width: 500px;
+          background: #fff3e3;
+          padding: 40px;
+          border-radius: 10px;
+          text-align: left;
+        }
+
+        .hero h4 {
+          font-size: 14px;
+          margin-bottom: 10px;
+          font-weight: 600;
+        }
+
+        .hero h1 {
+          font-size: 50px;
+          margin-bottom: 20px;
+          color: #b88e2f;
+          font-weight: 900;
+        }
+
+        .hero p {
+          font-size: 14px;
+          margin-bottom: 20px;
+
+          font-weight: 400;
+        }
+
+        .hero-button {
+          margin-top: 20px;
+          padding: 20px 40px;
+          background-color: #b88e2f;
+          color: #ffffff;
+          border: none;
+          cursor: pointer;
+          font-size: 14px;
+          font-weight: 600;
+        }
+        .hero-button:hover {
+          background-color: #a77d2a;
+        }
+
+        .categories-section {
+          padding: 60px 0;
+          background: #ffffff;
+          text-align: center;
+        }
+        .section-heading {
+          font-size: 26px;
+          font-weight: 600;
+        }
+
+        .container {
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 0 20px;
+        }
+
+        .section-description {
+          color: #666;
+          margin-bottom: 40px;
+          line-height: 1.6;
+        }
+
+        .categories-grid {
+          display: flex;
+          justify-content: space-between;
+          gap: 30px;
+        }
+
+        .category-item {
+          width: calc(33.33% - 20px);
+          max-width: 380px;
+        }
+
+        .category-image {
+          height: 450px;
+          border-radius: 8px;
+          overflow: hidden;
+          margin-bottom: 20px;
+        }
+
+        .category-image img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+
+        .category-title {
+          font-size: 20px;
+          font-weight: 500;
+        }
+
+        .products {
+          padding: 60px 5%;
+          background: #f9f9f9;
+        }
+
+        .section-title {
+          display: flex;
+          justify-content: center;
+          font-size: 35px;
+          margin-bottom: 20px;
+          font-weight: 600;
+        }
+        .product-grid {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 30px;
+          max-width: 1440px;
+          margin: 0 auto;
+        }
+
+        .product-card {
+          background: #f4f5f7;
+          position: relative;
+          overflow: hidden;
+          transition: transform 0.3s;
+          height: 550px;
+        }
+
+        .product-card:hover {
+          transform: scale(1.05);
+        }
+
+        .product-image {
+          height: 420px;
+          background: #f9f9f9;
+          overflow: hidden;
+          position: relative;
+          border-radius: 1%;
+        }
+
+        .product-image img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          transition: all 0.3s;
+        }
+
+        .product-card:hover .product-image img {
+          filter: brightness(0.7);
+        }
+
+        .product-badge {
+          position: absolute;
+          top: 15px;
+          right: 15px;
+          background: #ff6f61;
+          color: #ffffff;
+          padding: 8px 16px;
+          font-size: 14px;
+          z-index: 2;
+          border-radius: 50px;
+        }
+
+        .new-badge {
+          background: #2ec1ac !important;
+        }
+
+        .product-badge {
+          border-radius: 50px;
+        }
+
+        .hover-content {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          gap: 15px;
+          opacity: 0;
+          transition: all 0.3s;
+          z-index: 1;
+        }
+
+        .product-card:hover .hover-content {
+          opacity: 1;
+        }
+
+        .add-to-cart {
+          background: #ffffff;
+          color: #b88e2f;
+          padding: 12px 24px;
+          border: 1px solid #b88e2f;
+          cursor: pointer;
+          font-size: 16px;
+          transition: all 0.3s;
+        }
+
+        .add-to-cart:hover {
+          background: #c5a356;
+          color: white;
+        }
+
+        .product-actions {
+          display: flex;
+          gap: 20px;
+        }
+
+        .product-actions span {
+          color: #ffffff;
+          font-weight: bold;
+          cursor: pointer;
+          transition: color 0.3s;
+          display: flex;
+          margin-top: 10px;
+          align-items: center;
+          gap: 10px;
+        }
+
+        .product-actions span img {
+          width: 20px;
+          height: 20px;
+          object-fit: contain;
+          vertical-align: middle;
+        }
+
+        .product-actions span {
+          font-size: 14px;
+          display: inline-flex;
+          align-items: center;
+          gap: 4px;
+        }
+
+        .product-actions span:hover {
+          color: #ff6f61;
+        }
+
+        .product-info {
+          padding: 20px;
+          text-align: left;
+        }
+
+        .price {
+          display: flex;
+          gap: 10px;
+          margin-top: 10px;
+        }
+
+        .current-price {
+          font-weight: bold;
+        }
+
+        .original-price {
+          text-decoration: line-through;
+          color: #666;
+          font-weight: bold;
+        }
+
+        .show-more-container {
+          text-align: center;
+          margin-top: 50px;
+        }
+
+        .show-more-button {
+          background-color: #ffffff;
+          color: #b38d37;
+          border: 1px solid #c5a356;
+          padding: 15px 40px;
+          font-size: 16px;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          display: inline-block;
+          border-radius: 4px;
+        }
+
+        .show-more-button:hover {
+          background-color: #c5a356;
+          color: #ffffff;
+        }
+
+        .inspiration-section {
+          padding: 80px 5%;
+          background: #fcf8f3;
+        }
+
+        .inspiration-content {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          max-width: 1440px;
+          margin: 0 auto;
+        }
+
+        .inspiration-text {
+          max-width: 500px;
+        }
+
+        .inspiration-text h2 {
+          font-size: 50px;
+          margin-bottom: 20px;
+        }
+
+        .inspiration-text p {
+          font-size: 20px;
+          margin-bottom: 20px;
+        }
+
+        .inspiration-text button {
+          padding: 15px 25px;
+          background-color: #b38d37;
+          color: #ffffff;
+          border: none;
+          cursor: pointer;
+          font-size: 16px;
+        }
+        .inspiration-image {
+          width: 150%;
+          right: -30%;
+          height: 100%;
+          position: relative;
+        }
+
+        .social-section {
+          padding: 80px 5%;
+          background: #f9f9f9;
+        }
+
+        .social-content {
+          text-align: center;
+        }
+
+        .social-content h3 {
+          font-size: 20px;
+          margin-bottom: 15px;
+          font-weight: 400;
+          color: #747474;
+        }
+
+        .social-content h2 {
+          font-size: 42px;
+          font-weight: 600;
+          margin-bottom: 20px;
+        }
+
+        .social-content img {
+          width: 111.6%;
+          left: -6%;
+          position: relative;
+          height: auto;
+        }
+
+        .footer {
+          padding: 60px 5%;
+          background: #ffffff;
+        }
+
+        .footer-grid {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 40px;
+          max-width: 1440px;
+          margin: 0 auto;
+          padding-bottom: 60px;
+          border-bottom: 1px solid #ebe8f4;
+        }
+
+        .footer-section h4 {
+          margin-bottom: 20px;
+          color: #cfcfcf;
+          font-weight: 700;
+          opacity: 0.7;
+        }
+
+        .footer-section p {
+          color: #cfcfcf;
+          font-size: 14px;
+        }
+
+        .footer-links a {
+          display: block;
+          padding: 15px 0;
+          color: black;
+          text-decoration: none;
+          margin-bottom: 12px;
+          font-weight: 500;
+        }
+
+        .newsletter {
+          display: flex;
+          align-items: center;
+          border-bottom: 1px solid black;
+        }
+
+        .newsletter input {
+          flex: 1;
+          padding: 12px;
+          border: none;
+          outline: none;
+          background: none;
+
+          font-size: 14px;
+        }
+
+        .newsletter button {
+          padding: 12px;
+          background: none;
+          border: none;
+
+          cursor: pointer;
+          font-size: 14px;
+          font-weight: 600;
+        }
+
+        .footer-bottom {
+          text-align: left;
+          padding-top: 20px;
+          padding-left: 8.2%;
+          font-size: 14px;
+          color: #666;
+        }
+
+        .footer .logo {
+          font-size: 28px;
+          font-weight: 900;
+          margin-bottom: 10px;
+        }
+
+        @media (max-width: 1024px) {
+          .product-grid,
+          .footer-grid {
+            grid-template-columns: repeat(2, 1fr);
+          }
+        }
+        @media (max-width: 1830px) {
+          .inspiration-image {
+            display: none;
+          }
+          .inspiration-content {
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+          }
+        }
+        @media (max-width: 768px) {
+          .main-nav {
+            display: none;
+          }
+          .categories-grid {
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+          }
+
+          .category-item {
+            width: 100%;
+            max-width: 400px;
+          }
+
+          .category-image {
+            height: 280px;
+          }
+          .hero h1 {
+            font-size: 32px;
+          }
+
+          .product-grid,
+          .footer-grid {
+            grid-template-columns: 1fr;
+          }
+
+          .social-content h2 {
+            font-size: 32px;
+          }
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <nav class="nav-container">
+        <div class="logo">
+          <img src="Meubel House_Logos-05.png" alt="Furniro Logo" />
+          Furniro
+        </div>
+        <nav class="main-nav">
+          <a href="#home">Home</a>
+          <a href="#shop">Shop</a>
+          <a href="#about">About</a>
+          <a href="#contact">Contact</a>
+        </nav>
+        <div class="nav-icons">
+          <img src="mdi_account-alert-outline.png" alt="User Icon" />
+          <img src="akar-icons_search.png" alt="Search Icon" />
+          <img src="akar-icons_heart.png" alt="Heart Icon" />
+          <img src="ant-design_shopping-cart-outlined.png" alt="Cart Icon" />
+        </div>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="hero-content">
+        <h4>New Arrival</h4>
+        <h1>Discover Our New Collection</h1>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
+          tellus, luctus nec ullamcorper mattis.
+        </p>
+        <button class="hero-button">BUY NOW</button>
+      </div>
+    </section>
+
+    <section class="categories-section">
+      <div class="container">
+        <h2 class="section-heading">Browse The Range</h2>
+        <p class="section-description">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        </p>
+
+        <div class="categories-grid">
+          <div class="category-item">
+            <div class="category-image">
+              <img src="image 106.png" alt="Dining" />
+            </div>
+            <h3 class="category-title">Dining</h3>
+          </div>
+
+          <div class="category-item">
+            <div class="category-image">
+              <img src="image 100.png" alt="Living" />
+            </div>
+            <h3 class="category-title">Living</h3>
+          </div>
+
+          <div class="category-item">
+            <div class="category-image">
+              <img src="image 101.png " alt="Bedroom" />
+            </div>
+            <h3 class="category-title">Bedroom</h3>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="products">
+      <h2 class="section-title">Our Products</h2>
+
+      <div class="product-grid">
+        <div class="product-card">
+          <div class="product-badge new-badge">New</div>
+          <div class="product-image">
+            <img src="Images.png" alt="Syltherine" />
+            <div class="hover-content">
+              <button class="add-to-cart">Add to Cart</button>
+              <div class="product-actions">
+                <span><img src="gridicons_share.png" /> Share</span>
+                <span><img src="compare-svgrepo-com 1.png" /> Compare</span>
+                <span><img src="Heart.png" /> Like</span>
+              </div>
+            </div>
+          </div>
+          <div class="product-info">
+            <h3>Syltherine</h3>
+            <p>Stylish cafe chair</p>
+            <div class="price">
+              <span class="current-price">Rp 3.500.000</span>
+            </div>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-image">
+            <img src="Images(1).png" alt="Leviosa" />
+            <div class="hover-content">
+              <button class="add-to-cart">Add to Cart</button>
+              <div class="product-actions">
+                <span><img src="gridicons_share.png" /> Share</span>
+                <span><img src="compare-svgrepo-com 1.png" /> Compare</span>
+                <span><img src="Heart.png" /> Like</span>
+              </div>
+            </div>
+          </div>
+          <div class="product-info">
+            <h3>Leviosa</h3>
+            <p>Stylish cafe chair</p>
+            <div class="price">
+              <span class="current-price">Rp 1.500.000</span>
+            </div>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-badge">-50%</div>
+          <div class="product-image">
+            <img src="Images(2).png" alt="Lolito" />
+            <div class="hover-content">
+              <button class="add-to-cart">Add to Cart</button>
+              <div class="product-actions">
+                <span><img src="gridicons_share.png" /> Share</span>
+                <span><img src="compare-svgrepo-com 1.png" /> Compare</span>
+                <span><img src="Heart.png" /> Like</span>
+              </div>
+            </div>
+          </div>
+          <div class="product-info">
+            <h3>Lolito</h3>
+            <p>Luxury big sofa</p>
+            <div class="price">
+              <span class="current-price">Rp 2.500.000</span>
+              <span class="original-price">Rp 5.000.000</span>
+            </div>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-badge">-50%</div>
+          <div class="product-image">
+            <img src="Images(3).png" alt="Respira" />
+            <div class="hover-content">
+              <button class="add-to-cart">Add to Cart</button>
+              <div class="product-actions">
+                <span><img src="gridicons_share.png" /> Share</span>
+                <span><img src="compare-svgrepo-com 1.png" /> Compare</span>
+                <span><img src="Heart.png" /> Like</span>
+              </div>
+            </div>
+          </div>
+          <div class="product-info">
+            <h3>Respira</h3>
+            <p>Outdoor bar table and stool</p>
+            <div class="price">
+              <span class="current-price">Rp 2.500.000</span>
+              <span class="original-price">Rp 5.000.000</span>
+            </div>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-badge">-50%</div>
+          <div class="product-image">
+            <img src="Images(4).png" alt="Grifo" />
+            <div class="hover-content">
+              <button class="add-to-cart">Add to Cart</button>
+              <div class="product-actions">
+                <span><img src="gridicons_share.png" /> Share</span>
+                <span><img src="compare-svgrepo-com 1.png" /> Compare</span>
+                <span><img src="Heart.png" /> Like</span>
+              </div>
+            </div>
+          </div>
+          <div class="product-info">
+            <h3>Grifo</h3>
+            <p>Night lamp</p>
+            <div class="price">
+              <span class="current-price">Rp 2.500.000</span>
+              <span class="original-price">Rp 5.000.000</span>
+            </div>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-badge new-badge">New</div>
+          <div class="product-image">
+            <img src="Images(5).png" alt="Muggo" />
+            <div class="hover-content">
+              <button class="add-to-cart">Add to Cart</button>
+              <div class="product-actions">
+                <span><img src="gridicons_share.png" /> Share</span>
+                <span><img src="compare-svgrepo-com 1.png" /> Compare</span>
+                <span><img src="Heart.png" /> Like</span>
+              </div>
+            </div>
+          </div>
+          <div class="product-info">
+            <h3>Muggo</h3>
+            <p>Small mug</p>
+            <div class="price">
+              <span class="current-price">Rp 500.000</span>
+            </div>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-badge">-50%</div>
+          <div class="product-image">
+            <img src="Images(6).png" alt="Pingky" />
+            <div class="hover-content">
+              <button class="add-to-cart">Add to Cart</button>
+              <div class="product-actions">
+                <span><img src="gridicons_share.png" /> Share</span>
+                <span><img src="compare-svgrepo-com 1.png" /> Compare</span>
+                <span><img src="Heart.png" /> Like</span>
+              </div>
+            </div>
+          </div>
+          <div class="product-info">
+            <h3>Pingky</h3>
+            <p>Cute bed set</p>
+            <div class="price">
+              <span class="current-price">Rp 2.500.000</span>
+              <span class="original-price">Rp 5.000.000</span>
+            </div>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-image">
+            <img src="image 8.png" alt="Potty" />
+            <div class="hover-content">
+              <button class="add-to-cart">Add to Cart</button>
+              <div class="product-actions">
+                <span><img src="gridicons_share.png" /> Share</span>
+                <span><img src="compare-svgrepo-com 1.png" /> Compare</span>
+                <span><img src="Heart.png" /> Like</span>
+              </div>
+            </div>
+          </div>
+          <div class="product-info">
+            <h3>Potty</h3>
+            <p>Minimalist flower pot</p>
+            <div class="price">
+              <span class="current-price">Rp 1.000.000</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="show-more-container">
+        <button class="show-more-button">Show More</button>
+      </div>
+    </section>
+
+    <section class="inspiration-section">
+      <div class="inspiration-content">
+        <div class="inspiration-text">
+          <h2>50+ Beautiful rooms inspiration</h2>
+          <p>
+            Our designer already made a lot of beautiful prototype of rooms that
+            inspire you
+          </p>
+          <button>Explore More</button>
+        </div>
+        <div class="inspiration-image">
+          <img src="Products.png" alt="Inspiration Image 1" />
+        </div>
+      </div>
+    </section>
+
+    <section class="social-section">
+      <div class="social-content">
+        <h3>Share your setup with</h3>
+        <h2>#FurniroFurniture</h2>
+        <img src="setup.png" alt="Social Banner" />
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="footer-grid">
+        <div class="footer-section">
+          <div class="logo">Furniro.</div>
+          <p>400 University Drive Suite 200<br />Coral Gables, FL 33134 USA</p>
+        </div>
+        <div class="footer-section">
+          <h4>Links</h4>
+          <div class="footer-links">
+            <a href="#home">Home</a>
+            <a href="#shop">Shop</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+          </div>
+        </div>
+        <div class="footer-section">
+          <h4>Help</h4>
+          <div class="footer-links">
+            <a href="#payment">Payment Options</a>
+            <a href="#returns">Returns</a>
+            <a href="#privacy">Privacy Policies</a>
+          </div>
+        </div>
+        <div class="footer-section">
+          <h4>Newsletter</h4>
+          <div class="newsletter">
+            <input type="email" placeholder="Enter Your Email Address" />
+            <button>SUBSCRIBE</button>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>2023 Furniro. All rights reserved</p>
+      </div>
+    </footer>
+  </body>
+</html>
